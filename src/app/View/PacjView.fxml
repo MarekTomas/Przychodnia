@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="895.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.Controller.PacjController">
+   <children>
+      <TabPane prefHeight="645.0" prefWidth="895.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Zarezerwuj termin">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="618.0" fitWidth="895.0" layoutY="-1.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@../../../diagnosis_og_image_160.jpg" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="204.0" layoutY="64.0" prefHeight="27.0" prefWidth="173.0" text="Wybierz specjalizację">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <ChoiceBox fx:id="cb_lekarz" layoutX="407.0" layoutY="64.0" onMouseClicked="#CheckBoxWybierz" prefHeight="26.0" prefWidth="278.0" />
+                        <TableView fx:id="tv_tabela" layoutX="184.0" layoutY="136.0" prefHeight="395.0" prefWidth="638.0">
+                          <columns>
+                              <TableColumn fx:id="tc_id_v" prefWidth="75.0" text="Id_v" />
+                            <TableColumn fx:id="tc_imie" prefWidth="100.0" text="Imie" />
+                            <TableColumn fx:id="tc_nazwisko" prefWidth="100.0" text="Nazwisko" />
+                              <TableColumn fx:id="tz_specjalizacja" prefWidth="100.0" text="Specjalizacja" />
+                              <TableColumn fx:id="tc_data" prefWidth="100.0" text="Data " />
+                              <TableColumn fx:id="tc_godzina" prefWidth="100.0" text="Godzina" />
+                          </columns>
+                        </TableView>
+                        <Button fx:id="bt_rezerwuj" layoutX="575.0" layoutY="541.0" mnemonicParsing="false" onMouseClicked="#buttonClickRezerwuj" text="Rezerwuj wizytę" />
+                        <Button fx:id="bt_pokaz" alignment="CENTER" layoutX="204.0" layoutY="541.0" mnemonicParsing="false" onMouseClicked="#buttonClickPokaz" prefHeight="22.0" prefWidth="135.0" text="Pokaż wizyty" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Zarządzaj rezerwacjami">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="618.0" fitWidth="895.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@../../../diagnosis_og_image_160.jpg" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="bt_zarezWyswietl" layoutX="219.0" layoutY="333.0" mnemonicParsing="false" onMouseClicked="#buttonClickZarezWyswietl" text="Wyświetl rezerwację" />
+                        <TableView fx:id="tv_zarezWizyty" layoutX="55.0" layoutY="79.0" prefHeight="234.0" prefWidth="730.0">
+                          <columns>
+                              <TableColumn fx:id="tc_zarezid_v" prefWidth="75.0" text="Id_v" />
+                            <TableColumn fx:id="tc_zarezImie" prefWidth="130.0" text="Imie" />
+                            <TableColumn fx:id="tc_zarezNazwisko" prefWidth="130.0" text="Nazwisko" />
+                              <TableColumn fx:id="tc_zarezSpecjalizacja" prefWidth="130.0" text="Specjalizacja" />
+                              <TableColumn fx:id="tc_zarezData" prefWidth="130.0" text="Data" />
+                              <TableColumn fx:id="tc_zarezGodz" prefWidth="130.0" text="Godzina" />
+                          </columns>
+                        </TableView>
+                        <Button fx:id="bt_odwolaj" layoutX="517.0" layoutY="332.0" mnemonicParsing="false" onMouseClicked="#ButtonClickZarezOdwolaj" prefHeight="26.0" prefWidth="123.0" text="Odwołaj wizytę" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

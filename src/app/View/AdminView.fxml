@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="676.0" prefWidth="895.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.Controller.AdminController">
+   <children>
+      <SplitPane dividerPositions="0.18360949395432152" prefHeight="676.0" prefWidth="895.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <VBox prefHeight="674.0" prefWidth="162.0">
+                     <children>
+                        <Button fx:id="bt_admin_dodajUz" mnemonicParsing="false" onMouseClicked="#ButtonDodajUztkownika" prefHeight="60.0" prefWidth="168.0" text="Dodaj użytkownika" />
+                        <Button fx:id="bt_admin_usunUz" mnemonicParsing="false" onMouseClicked="#ButtonUsunUzytkownika" prefHeight="60.0" prefWidth="168.0" text="Usuń użytkownika" />
+                        <Button fx:id="bt_admin_dodajLe" mnemonicParsing="false" onMouseClicked="#ButtonDodajLekarza" prefHeight="60.0" prefWidth="168.0" text="Dodaj lekarza" />
+                        <Button fx:id="bt_admin_usunLe" mnemonicParsing="false" onMouseClicked="#ButtonUsunLekarza" prefHeight="60.0" prefWidth="168.0" text="Usuń lekarza" />
+                        <Button fx:id="bt_admin_rezWi" mnemonicParsing="false" onMouseClicked="#ButtonRezerwujWizyte" prefHeight="60.0" prefWidth="168.0" text="Rezerwuj wizytę" />
+                        <Button fx:id="bt_admin_usunWi" mnemonicParsing="false" onMouseClicked="#ButtonUsunWizyte" prefHeight="60.0" prefWidth="168.0" text="Usuń wiztę" />
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="674.0" prefWidth="521.0">
+               <children>
+                  <TabPane prefHeight="674.0" prefWidth="726.0" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                      <Tab text="Użytkownik">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Label layoutX="105.0" layoutY="66.0" prefHeight="35.0" prefWidth="108.0" text="Imie" AnchorPane.leftAnchor="105.0" AnchorPane.topAnchor="66.0">
+                                       <font>
+                                          <Font size="22.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="105.0" layoutY="119.0" prefHeight="35.0" prefWidth="108.0" text="Nazwisko" AnchorPane.leftAnchor="105.0" AnchorPane.topAnchor="119.0">
+                                       <font>
+                                          <Font size="22.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="105.0" layoutY="223.0" prefHeight="35.0" prefWidth="108.0" text="E-mail" AnchorPane.leftAnchor="105.0" AnchorPane.topAnchor="223.0">
+                                       <font>
+                                          <Font size="22.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="105.0" layoutY="170.0" prefHeight="35.0" prefWidth="108.0" text="Pesel" AnchorPane.leftAnchor="105.0" AnchorPane.topAnchor="170.0">
+                                       <font>
+                                          <Font size="22.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="105.0" layoutY="284.0" prefHeight="35.0" prefWidth="153.0" text="Uprawnienia" AnchorPane.leftAnchor="105.0" AnchorPane.topAnchor="284.0">
+                                       <font>
+                                          <Font size="22.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="tf_imie_uzytkownik" layoutX="281.0" layoutY="69.0" prefHeight="29.0" prefWidth="222.0" AnchorPane.leftAnchor="281.0" AnchorPane.topAnchor="69.0" />
+                                    <TextField fx:id="tf_nazwisko_uzytkownik" layoutX="281.0" layoutY="123.0" prefHeight="29.0" prefWidth="222.0" AnchorPane.leftAnchor="281.0" AnchorPane.topAnchor="123.0" />
+                                    <TextField fx:id="tf_email_uzytkownik" layoutX="281.0" layoutY="174.0" prefHeight="29.0" prefWidth="222.0" AnchorPane.leftAnchor="281.0" AnchorPane.topAnchor="174.0" />
+                                    <TextField fx:id="tf_pesel_uzytkownik" layoutX="281.0" layoutY="225.0" prefHeight="29.0" prefWidth="222.0" AnchorPane.leftAnchor="281.0" AnchorPane.topAnchor="225.0" />
+                                    <TextField fx:id="tf_upraw_uzytkownik" layoutX="281.0" layoutY="286.0" prefHeight="29.0" prefWidth="222.0" AnchorPane.topAnchor="286.0" />
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                      <Tab text="Lekarz">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <Label layoutX="97.0" layoutY="69.0" prefHeight="38.0" prefWidth="98.0" text="Imie" AnchorPane.leftAnchor="105.0" AnchorPane.topAnchor="66.0">
+                                       <font>
+                                          <Font size="22.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="107.0" layoutY="119.0" prefHeight="38.0" prefWidth="98.0" text="Nazwisko" AnchorPane.leftAnchor="105.0" AnchorPane.topAnchor="119.0">
+                                       <font>
+                                          <Font size="22.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="107.0" layoutY="176.0" prefHeight="38.0" prefWidth="98.0" text="Pesel" AnchorPane.leftAnchor="105.0" AnchorPane.topAnchor="170.0">
+                                       <font>
+                                          <Font size="22.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="107.0" layoutY="235.0" prefHeight="38.0" prefWidth="98.0" text="E-mail" AnchorPane.leftAnchor="105.0" AnchorPane.topAnchor="223.0">
+                                       <font>
+                                          <Font size="22.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="388.0" layoutY="357.0" prefHeight="38.0" prefWidth="139.0" text="Uprawnienia" AnchorPane.leftAnchor="105.0" AnchorPane.topAnchor="284.0">
+                                       <font>
+                                          <Font size="22.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="109.0" layoutY="330.0" prefHeight="38.0" prefWidth="132.0" text="Specjalizacja" AnchorPane.leftAnchor="105.0" AnchorPane.topAnchor="345.0">
+                                       <font>
+                                          <Font size="22.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="tf_imie_le" layoutX="275.0" layoutY="73.0" prefHeight="29.0" prefWidth="222.0" AnchorPane.leftAnchor="281.0" AnchorPane.topAnchor="69.0" />
+                                    <TextField fx:id="tf_nazwisko_le" layoutX="274.0" layoutY="123.0" prefHeight="29.0" prefWidth="222.0" AnchorPane.leftAnchor="281.0" AnchorPane.topAnchor="123.0" />
+                                    <TextField fx:id="tf_pesel_le" layoutX="291.0" layoutY="174.0" prefHeight="29.0" prefWidth="222.0" AnchorPane.leftAnchor="281.0" AnchorPane.topAnchor="174.0" />
+                                    <TextField fx:id="tf_email_le" layoutX="274.0" layoutY="227.0" prefHeight="29.0" prefWidth="222.0" AnchorPane.leftAnchor="281.0" AnchorPane.topAnchor="225.0" />
+                                    <TextField fx:id="tf_upraw_le" layoutX="291.0" layoutY="292.0" prefHeight="29.0" prefWidth="222.0" AnchorPane.leftAnchor="281.0" AnchorPane.topAnchor="286.0" />
+                                    <TextField fx:id="tf_specja_le" layoutX="281.0" layoutY="349.0" prefHeight="29.0" prefWidth="222.0" AnchorPane.leftAnchor="281.0" AnchorPane.topAnchor="349.0" />
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                        <Tab text="Wizyta">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                          </content>
+                        </Tab>
+                    </tabs>
+                  </TabPane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
