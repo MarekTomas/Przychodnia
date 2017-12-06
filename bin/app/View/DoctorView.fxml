@@ -23,7 +23,7 @@
       </Label>
       <Label fx:id="lb_wiadomosc" layoutX="122.0" layoutY="419.0" prefHeight="214.0" prefWidth="662.0" wrapText="true">
          <font>
-            <Font size="20.0" />
+            <Font size="23.0" />
          </font>
       </Label>
       <Label layoutX="317.0" layoutY="387.0" text="Informację dla Lekarza:">
@@ -32,13 +32,13 @@
          </font>
       </Label>
       <Button fx:id="bt_wyloguj" layoutX="803.0" layoutY="621.0" mnemonicParsing="false" onMouseClicked="#ButtonWyloguj" text="Wyloguj" />
-      <TableView fx:id="tv_doctor" layoutX="187.0" layoutY="125.0" prefHeight="230.0" prefWidth="556.0">
+      <TableView fx:id="tv_doctor" layoutX="187.0" layoutY="125.0" prefHeight="230.0" prefWidth="482.0">
         <columns>
           <TableColumn fx:id="tc_imie" prefWidth="120.0" text="Imie" />
           <TableColumn fx:id="tc_nazwisko" prefWidth="120.0" text="Nazwisko" />
             <TableColumn fx:id="tc_data" prefWidth="120.0" text="Data" />
             <TableColumn fx:id="tc_godzina" prefWidth="120.0" text="Godzina" />
-            <TableColumn fx:id="tc_id_d" prefWidth="75.0" text="id_d" />
+            <TableColumn fx:id="tc_id_d" prefWidth="75.0" text="id_d" visible="false" />
         </columns>
       </TableView>
    </children>

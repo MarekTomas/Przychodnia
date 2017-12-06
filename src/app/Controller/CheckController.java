@@ -23,7 +23,7 @@ public class CheckController {
     @FXML
     private Button bt_close;
     
-    public static String message;
+    //public static  String message;
 
     @FXML
     void ButtonClose(MouseEvent event) throws IOException {
@@ -38,11 +38,21 @@ public class CheckController {
     }
 
     @FXML
-    void ButtonSend(MouseEvent event) {
+    void ButtonSend(MouseEvent event) throws IOException {
+    	//message = ta_informacion.getText();
     	
-    	 message = ta_informacion.getText();
-    	
+    	Stage stage = new Stage();
+		Parent parent = (Parent) FXMLLoader.load(getClass().getResource("/app/View/PacjView.fxml"));
+		Scene scene = new Scene(parent);
+		stage.setScene(scene);
+		stage.setTitle("Witaj");	
+		stage.show();
+		((Node) (event.getSource())).getScene().getWindow().hide();
 
+    	
+    	
+    	
+    	 
     }
 
 }

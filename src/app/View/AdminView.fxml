@@ -6,6 +6,8 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -72,8 +74,8 @@
                                     </Label>
                                     <TextField fx:id="tf_imie_uzytkownik" layoutX="281.0" layoutY="69.0" prefHeight="29.0" prefWidth="222.0" AnchorPane.leftAnchor="281.0" AnchorPane.topAnchor="69.0" />
                                     <TextField fx:id="tf_nazwisko_uzytkownik" layoutX="281.0" layoutY="123.0" prefHeight="29.0" prefWidth="222.0" AnchorPane.leftAnchor="281.0" AnchorPane.topAnchor="123.0" />
-                                    <TextField fx:id="tf_email_uzytkownik" layoutX="281.0" layoutY="174.0" prefHeight="29.0" prefWidth="222.0" AnchorPane.leftAnchor="281.0" AnchorPane.topAnchor="174.0" />
-                                    <TextField fx:id="tf_pesel_uzytkownik" layoutX="281.0" layoutY="225.0" prefHeight="29.0" prefWidth="222.0" AnchorPane.leftAnchor="281.0" AnchorPane.topAnchor="225.0" />
+                                    <TextField fx:id="tf_pesel_uzytkownik" layoutX="281.0" layoutY="173.0" prefHeight="29.0" prefWidth="222.0" AnchorPane.leftAnchor="281.0" AnchorPane.topAnchor="173.0" />
+                                    <TextField fx:id="tf_email_uzytkownik" layoutX="281.0" layoutY="226.0" prefHeight="29.0" prefWidth="222.0" AnchorPane.leftAnchor="281.0" AnchorPane.topAnchor="226.0" />
                                     <TextField fx:id="tf_upraw_uzytkownik" layoutX="281.0" layoutY="286.0" prefHeight="29.0" prefWidth="222.0" AnchorPane.topAnchor="286.0" />
                                     <RadioButton fx:id="rb_potwierdz" layoutX="105.0" layoutY="357.0" mnemonicParsing="false" text="Potwierdzasz usunięcie użytkownika ?">
                                        <font>
@@ -124,13 +126,38 @@
                                     <TextField fx:id="tf_email_le" layoutX="274.0" layoutY="227.0" prefHeight="29.0" prefWidth="222.0" AnchorPane.leftAnchor="281.0" AnchorPane.topAnchor="225.0" />
                                     <TextField fx:id="tf_upraw_le" layoutX="291.0" layoutY="292.0" prefHeight="29.0" prefWidth="222.0" AnchorPane.leftAnchor="281.0" AnchorPane.topAnchor="286.0" />
                                     <TextField fx:id="tf_specja_le" layoutX="281.0" layoutY="349.0" prefHeight="29.0" prefWidth="222.0" AnchorPane.leftAnchor="281.0" AnchorPane.topAnchor="349.0" />
+                                    <RadioButton fx:id="rb_potwierdzL" layoutX="105.0" layoutY="418.0" mnemonicParsing="false" text="Potwierdzasz usunięcie lekarza ?">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </RadioButton>
                                  </children>
                               </AnchorPane>
                         </content>
                       </Tab>
                         <Tab text="Wizyta">
                           <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TableView layoutX="26.0" layoutY="53.0" prefHeight="349.0" prefWidth="639.0">
+                                      <columns>
+                                        <TableColumn text="id_wizyty" />
+                                        <TableColumn text="imie" />
+                                          <TableColumn text="nazwisko" />
+                                          <TableColumn text="specjalizacja" />
+                                          <TableColumn text="dzien" />
+                                          <TableColumn text="godz" />
+                                          <TableColumn text="pesel" />
+                                          <TableColumn text="Id_d" />
+                                      </columns>
+                                    </TableView>
+                                    <Button layoutX="581.0" layoutY="424.0" mnemonicParsing="false" text="Pokaż wizyty" />
+                                    <RadioButton layoutX="26.0" layoutY="427.0" mnemonicParsing="false" text="Potwierdzasz usunięcie wizyty">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </RadioButton>
+                                 </children></AnchorPane>
                           </content>
                         </Tab>
                     </tabs>

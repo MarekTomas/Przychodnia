@@ -6,6 +6,7 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.util.HashMap;
 
 import app.Database.DBConnector;
 import app.Model.Doctor;
@@ -32,7 +33,7 @@ public class DoctorController {
 
 	@FXML
 	private Label lb_wiadomosc;
-
+	
 	@FXML
 	private TableColumn<Doctor, String> tc_imie;
 
@@ -50,10 +51,11 @@ public class DoctorController {
 
 	@FXML
 	private Button bt_wyloguj;
-
-	public static String send = String.valueOf(CheckController.message);
+	
+	//public  String send = String.valueOf(CheckController.message);
 	public static String pas = String.valueOf(LoginController.pass);
-
+	//HashMap<Integer, String> zbiorWiadomosci = new HashMap<>();
+	
 	@FXML
 	void ButtonWyloguj(MouseEvent event) throws IOException {
 
@@ -84,6 +86,8 @@ public class DoctorController {
 			tv_doctor.setItems(null);
 			tv_doctor.setItems(list);
 		}
+		
+		//lb_wiadomosc.setText(zbiorWiadomosci);
 
 	}
 }
