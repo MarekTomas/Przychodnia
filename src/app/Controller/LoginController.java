@@ -21,72 +21,71 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class LoginController {
-	
-    @FXML
-    private PasswordField pf_password;
-
-    @FXML
-    private TextField tf_login;
-
-    @FXML
-    private Button bt_logowanie;
-
-    @FXML
-    private Button bt_rejestracja;
- 
-    DBConnector db;
-    public static String a;
-    public static String pass;
 
 	@FXML
-    void buttonLogowanie(MouseEvent event) throws SQLException, IOException {
-		Connection conn1 =  db.Connection();
-    	Statement stmt = conn1.createStatement();
-    	ResultSet rs = stmt.executeQuery("SELECT uprawnienia FROM users WHERE e_mail='"+tf_login.getText()+"' and pesel='"+pf_password.getText()+"';");
-    	pass = pf_password.getText();
-    	if(rs.next()) {
-    		a = rs.getString("uprawnienia");
-    		if(a.equals("user")) {
-		    	Stage stage = new Stage();
+	private PasswordField pf_password;
+
+	@FXML
+	private TextField tf_login;
+
+	@FXML
+	private Button bt_logowanie;
+
+	@FXML
+	private Button bt_rejestracja;
+
+	DBConnector db;
+	public static String a;
+	public static String pass;
+
+	@FXML
+	void buttonLogowanie(MouseEvent event) throws SQLException, IOException {
+		Connection conn1 = db.Connection();
+		Statement stmt = conn1.createStatement();
+		ResultSet rs = stmt.executeQuery(
+				"select s.uprawnienia from( SELECT uprawnienia,e_mail,pesel FROM doctors union select  uprawnienia, e_mail, pesel FROM users)s where s.e_mail ='"
+						+ tf_login.getText() + "' and s.pesel='" + pf_password.getText() + "';");
+		pass = pf_password.getText();
+		if (rs.next()) {
+			a = rs.getString("uprawnienia");
+			if (a.equals("user")) {
+				Stage stage = new Stage();
 				Parent parent = (Parent) FXMLLoader.load(getClass().getResource("/app/View/PacjView.fxml"));
 				Scene scene = new Scene(parent);
 				stage.setScene(scene);
-				stage.setTitle("Witaj");	
+				stage.setTitle("Witaj");
 				stage.show();
 				((Node) (event.getSource())).getScene().getWindow().hide();
-	    		}
-	    	else if(a.equals("lekarz")) {
+			} else if (a.equals("doctor")) {
 				Stage stage = new Stage();
-				Parent parent = (Parent) FXMLLoader.load(getClass().getResource("/app/View/LekarzView.fxml"));
+				Parent parent = (Parent) FXMLLoader.load(getClass().getResource("/app/View/DoctorView.fxml"));
 				Scene scene = new Scene(parent);
 				stage.setScene(scene);
-				stage.setTitle("Witaj doktorze");	
+				stage.setTitle("Witaj doktorze");
 				stage.show();
 				((Node) (event.getSource())).getScene().getWindow().hide();
-			}
-			else if(a.equals("admin")) {
+			} else if (a.equals("admin")) {
 				Stage stage = new Stage();
 				Parent parent = (Parent) FXMLLoader.load(getClass().getResource("/app/View/AdminView.fxml"));
 				Scene scene = new Scene(parent);
 				stage.setScene(scene);
-				stage.setTitle("Admin");	
+				stage.setTitle("Admin");
 				stage.show();
 				((Node) (event.getSource())).getScene().getWindow().hide();
 			}
-		
-    	}
-    	else {
+
+		} else {
 			Alert statement = new Alert(AlertType.INFORMATION);
 			statement.setHeaderText("B³¹d");
 			statement.setContentText("B³êdne has³o lub login");
 			statement.setTitle("Nale¿y podaæ poprawne dane logowania");
 			statement.showAndWait();
-			}
+		}
 	}
-	
-    @FXML
-    void buttonRejestracja(MouseEvent event) throws IOException {
-    	Stage stage = new Stage();
+
+	@FXML
+	void buttonRejestracja(MouseEvent event) throws IOException {
+		Stage stage = new Stage();
 		Parent parent = (Parent) FXMLLoader.load(getClass().getResource("/app/View/RegistrationView.fxml"));
 		Scene scene = new Scene(parent);
 		stage.setScene(scene);
@@ -94,9 +93,10 @@ public class LoginController {
 		stage.show();
 		((Node) (event.getSource())).getScene().getWindow().hide();
 
-    }
-    public void initialize() {
-    	db = new DBConnector();
-  
-}
+	}
+
+	public void initialize() {
+		db = new DBConnector();
+
+	}
 }

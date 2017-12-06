@@ -22,6 +22,8 @@ public class CheckController {
 
     @FXML
     private Button bt_close;
+    
+    public static String message;
 
     @FXML
     void ButtonClose(MouseEvent event) throws IOException {
@@ -38,6 +40,7 @@ public class CheckController {
     @FXML
     void ButtonSend(MouseEvent event) {
     	
+    	 message = ta_informacion.getText();
     	
 
     }

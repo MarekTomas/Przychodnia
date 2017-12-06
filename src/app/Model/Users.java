@@ -10,6 +10,7 @@ public class Users {
 	private String specjalizacja;
 	private Date day_v;
 	private Time time_v;
+	private Integer id_d;
 	
 	
 	
@@ -58,8 +59,21 @@ public class Users {
 	public void setTime_v(Time time_v) {
 		this.time_v = time_v;
 	}
+	
+	
 
-	public Users(Integer id_v, String imie, String nazwisko, String specjalizacja, Date day_v, Time time_v) {
+	public Integer getId_d() {
+		return id_d;
+	}
+
+
+	public void setId_d(Integer id_d) {
+		this.id_d = id_d;
+	}
+
+
+	public Users(Integer id_v, String imie, String nazwisko, String specjalizacja, Date day_v, Time time_v,
+			Integer id_d) {
 		super();
 		this.id_v = id_v;
 		this.imie = imie;
@@ -67,12 +81,15 @@ public class Users {
 		this.specjalizacja = specjalizacja;
 		this.day_v = day_v;
 		this.time_v = time_v;
+		this.id_d = id_d;
+	}
+
+	
+
 	}
 	
 	
 	
 	
-}	
-
 	
 

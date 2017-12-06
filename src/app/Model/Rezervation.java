@@ -11,6 +11,7 @@ public class Rezervation {
 	private Date day_v;
 	private Time time_v;
 	private String pesel;
+	private Integer tc_id_d;
 	
 	
 	public String getPesel() {
@@ -60,8 +61,15 @@ public class Rezervation {
 	public void setTime_v(Time time_v) {
 		this.time_v = time_v;
 	}
+	
+	public Integer getTc_id_d() {
+		return tc_id_d;
+	}
+	public void setTc_id_d(Integer tc_id_d) {
+		this.tc_id_d = tc_id_d;
+	}
 	public Rezervation(Integer id_v, String imie, String nazwisko, String specjalizacja, Date day_v, Time time_v,
-			String pesel) {
+			String pesel, Integer tc_id_d) {
 		super();
 		this.id_v = id_v;
 		this.imie = imie;
@@ -70,7 +78,9 @@ public class Rezervation {
 		this.day_v = day_v;
 		this.time_v = time_v;
 		this.pesel = pesel;
+		this.tc_id_d = tc_id_d;
 	}
+	
 
 	
 	

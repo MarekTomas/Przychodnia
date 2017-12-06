@@ -2,14 +2,16 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="676.0" prefWidth="895.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.Controller.AdminController">
    <children>
@@ -25,6 +27,12 @@
                         <Button fx:id="bt_admin_usunLe" mnemonicParsing="false" onMouseClicked="#ButtonUsunLekarza" prefHeight="60.0" prefWidth="168.0" text="Usuń lekarza" />
                         <Button fx:id="bt_admin_rezWi" mnemonicParsing="false" onMouseClicked="#ButtonRezerwujWizyte" prefHeight="60.0" prefWidth="168.0" text="Rezerwuj wizytę" />
                         <Button fx:id="bt_admin_usunWi" mnemonicParsing="false" onMouseClicked="#ButtonUsunWizyte" prefHeight="60.0" prefWidth="168.0" text="Usuń wiztę" />
+                        <Button fx:id="bt_admin_wylog" mnemonicParsing="false" onMouseClicked="#buttonWyloguj" prefHeight="46.0" prefWidth="162.0" text="Wyloguj" />
+                        <ImageView fitHeight="222.0" fitWidth="162.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@../../../medica.jpg" />
+                           </image>
+                        </ImageView>
                      </children>
                   </VBox>
                </children>
@@ -67,6 +75,11 @@
                                     <TextField fx:id="tf_email_uzytkownik" layoutX="281.0" layoutY="174.0" prefHeight="29.0" prefWidth="222.0" AnchorPane.leftAnchor="281.0" AnchorPane.topAnchor="174.0" />
                                     <TextField fx:id="tf_pesel_uzytkownik" layoutX="281.0" layoutY="225.0" prefHeight="29.0" prefWidth="222.0" AnchorPane.leftAnchor="281.0" AnchorPane.topAnchor="225.0" />
                                     <TextField fx:id="tf_upraw_uzytkownik" layoutX="281.0" layoutY="286.0" prefHeight="29.0" prefWidth="222.0" AnchorPane.topAnchor="286.0" />
+                                    <RadioButton fx:id="rb_potwierdz" layoutX="105.0" layoutY="357.0" mnemonicParsing="false" text="Potwierdzasz usunięcie użytkownika ?">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </RadioButton>
                                  </children>
                               </AnchorPane>
                         </content>
