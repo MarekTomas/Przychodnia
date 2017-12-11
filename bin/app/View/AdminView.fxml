@@ -6,6 +6,8 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -25,7 +27,6 @@
                         <Button fx:id="bt_admin_usunUz" mnemonicParsing="false" onMouseClicked="#ButtonUsunUzytkownika" prefHeight="60.0" prefWidth="168.0" text="Usuń użytkownika" />
                         <Button fx:id="bt_admin_dodajLe" mnemonicParsing="false" onMouseClicked="#ButtonDodajLekarza" prefHeight="60.0" prefWidth="168.0" text="Dodaj lekarza" />
                         <Button fx:id="bt_admin_usunLe" mnemonicParsing="false" onMouseClicked="#ButtonUsunLekarza" prefHeight="60.0" prefWidth="168.0" text="Usuń lekarza" />
-                        <Button fx:id="bt_admin_rezWi" mnemonicParsing="false" onMouseClicked="#ButtonRezerwujWizyte" prefHeight="60.0" prefWidth="168.0" text="Rezerwuj wizytę" />
                         <Button fx:id="bt_admin_usunWi" mnemonicParsing="false" onMouseClicked="#ButtonUsunWizyte" prefHeight="60.0" prefWidth="168.0" text="Usuń wiztę" />
                         <Button fx:id="bt_admin_wylog" mnemonicParsing="false" onMouseClicked="#buttonWyloguj" prefHeight="46.0" prefWidth="162.0" text="Wyloguj" />
                         <ImageView fitHeight="222.0" fitWidth="162.0" pickOnBounds="true">
@@ -135,7 +136,26 @@
                       </Tab>
                         <Tab text="Wizyta">
                           <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TableView fx:id="tv_admin_rezerwation" layoutX="19.0" layoutY="54.0" prefHeight="350.0" prefWidth="678.0">
+                                      <columns>
+                                        <TableColumn fx:id="tb_admin_idv" prefWidth="85.0" text="id_wizyty" />
+                                        <TableColumn fx:id="tb_admin_imie" prefWidth="85.0" text="imie" />
+                                          <TableColumn fx:id="tb_admin_nazwisko" prefWidth="85.0" text="nazwisko" />
+                                          <TableColumn fx:id="tb_admin_specjal" prefWidth="85.0" text="specjalizacja" />
+                                          <TableColumn fx:id="tb_admin_dzien" prefWidth="85.0" text="dzien" />
+                                          <TableColumn fx:id="tb_admin_godz" prefWidth="85.0" text="godz" />
+                                          <TableColumn fx:id="tb_admin_pesel" prefWidth="85.0" text="pesel_pacjęta" />
+                                          <TableColumn fx:id="tb_admin_id" prefWidth="85.0" text="Id_d" />
+                                      </columns>
+                                    </TableView>
+                                    <RadioButton fx:id="rb_potwierdz_wizyt" layoutX="26.0" layoutY="427.0" mnemonicParsing="false" text="Potwierdzasz usunięcie wizyty">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </RadioButton>
+                                 </children></AnchorPane>
                           </content>
                         </Tab>
                     </tabs>

@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class DBConnector {
 	public Connection Connection() throws SQLException {
-		return DriverManager.getConnection("jdbc:mysql://localhost:3306/przychodnia?verifyServerCertificate=false&useSSL=true", "root",
-				"MarianPetarda1");
+		return DriverManager.getConnection("jdbc:mysql://localhost:3306/przychodnia?verifyServerCertificate=false&useSSL=true", "javaUser",
+				"1qazXSW@");
 	}
 }
