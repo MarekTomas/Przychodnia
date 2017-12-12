@@ -1,0 +1,2 @@
+# Przychodnia
+Projekt stworzony w środowisku Java w oparciu o bibliotekę JavaFX oraz przy pomocy Scene Builder-a. Aplikacja ma symulować możliwość zarejstrowania się na wizytę do lekarza. Dostajemy 3 radzaje dostępu. Pacjent, lekarz oraz admin. Pacjent ma możliwość wyświetlenia wszystkich dostępnych wizyt, zarezerwowanie wizyty, odwołanie wizyty oraz przesłanie informacji do lekarza o stanie sowjego zdrowia. Lekarz ma możliwość odczytania informacji od pacjenta oraz odwołanie wizyty. Administrator ma dostęp do wszystkich powyższych funkcji.
