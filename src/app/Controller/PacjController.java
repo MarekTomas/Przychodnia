@@ -25,6 +25,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -133,7 +134,7 @@ public class PacjController {
 		stage.setTitle("Witaj");
 		stage.show();
 		((Node) (event.getSource())).getScene().getWindow().hide();
-
+		
 	}
 
 	// odwo³anie rezerwacji
@@ -165,7 +166,7 @@ public class PacjController {
 		PreparedStatement.setContentText("Wizyta odwo³ana");
 		PreparedStatement.setTitle("");
 		PreparedStatement.showAndWait();
-
+	
 	}
 
 	@FXML // wyjœcie do widoku logowania
@@ -180,6 +181,37 @@ public class PacjController {
 
 	}
 
+	// Filtrowanie wyników
+	@FXML
+	void filter(KeyEvent event) throws SQLException {
+
+		visits = FXCollections.observableArrayList();
+		Connection conn = db.Connection();
+		String search = tf_filt.getText();
+		if (!search.equals("")) {
+			ResultSet rs = conn.createStatement().executeQuery(
+					"select id_v,imie, nazwisko, specjalizacja, day_v, time_v,id_d from doctors natural join visits where id_d = id_d and locate('"
+							+ search + "',imie)!=0 or locate('" + search + "',nazwisko)!=0 ");
+			while (rs.next()) {
+				visits.add(new Users(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDate(5),
+						rs.getTime(6), rs.getInt(7)));
+
+				tc_id_v.setCellValueFactory(new PropertyValueFactory<Users, Integer>("id_v"));
+				tc_imie.setCellValueFactory(new PropertyValueFactory<Users, String>("imie"));
+				tc_nazwisko.setCellValueFactory(new PropertyValueFactory<Users, String>("nazwisko"));
+				tz_specjalizacja.setCellValueFactory(new PropertyValueFactory<Users, String>("specjalizacja"));
+				tc_data.setCellValueFactory(new PropertyValueFactory<Users, Date>("day_v"));
+				tc_godzina.setCellValueFactory(new PropertyValueFactory<Users, Time>("time_v"));
+				tc_id_d.setCellValueFactory(new PropertyValueFactory<Users, Integer>("id_d"));
+				tv_tabela.setItems(null);
+				tv_tabela.setItems(visits);
+			}
+		} else {
+			initialize();
+		}
+	
+	}
+
 	public void initialize() throws SQLException {
 
 		db = new DBConnector();
@@ -187,10 +219,8 @@ public class PacjController {
 		// wyœwietlanie dostêpnych wizyt
 		visits = FXCollections.observableArrayList();
 		Connection conn = db.Connection();
-		String search = tf_filt.getText();
-		if(search.equals("")) {
 		ResultSet rs = conn.createStatement().executeQuery(
-				"select id_v,imie, nazwisko, specjalizacja, day_v, time_v,id_d from doctors natural join visits where id_d = id_d;");
+				"select id_v,imie, nazwisko, specjalizacja, day_v, time_v,id_d from doctors natural join visits where id_d = id_d");
 		while (rs.next()) {
 			visits.add(new Users(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDate(5),
 					rs.getTime(6), rs.getInt(7)));
@@ -204,29 +234,28 @@ public class PacjController {
 			tc_id_d.setCellValueFactory(new PropertyValueFactory<Users, Integer>("id_d"));
 			tv_tabela.setItems(null);
 			tv_tabela.setItems(visits);
-		}
-		}else {
 			
 		}
-			// Wyœwietlanie zarezerwowanych wizyt przez pacjêta
-			rezer = FXCollections.observableArrayList();
-			ResultSet rezs = conn.createStatement().executeQuery(
-					"select id_v,imie, nazwisko, specjalizacja, day_v, time_v, pesel,id_d from zarezerwowane where pesel ="
-							+ "'" + pas + "';");
-			while (rezs.next()) {
-				rezer.add(new Rezervation(rezs.getInt(1), rezs.getString(2), rezs.getString(3), rezs.getString(4),
-						rezs.getDate(5), rezs.getTime(6), rezs.getString(7), rezs.getInt(8)));
 
-			}
-			tc_zarezid_v.setCellValueFactory(new PropertyValueFactory<Rezervation, Integer>("id_v"));
-			tc_zarezImie.setCellValueFactory(new PropertyValueFactory<Rezervation, String>("imie"));
-			tc_zarezNazwisko.setCellValueFactory(new PropertyValueFactory<Rezervation, String>("nazwisko"));
-			tc_zarezSpecjalizacja.setCellValueFactory(new PropertyValueFactory<Rezervation, String>("specjalizacja"));
-			tc_zarezData.setCellValueFactory(new PropertyValueFactory<Rezervation, Date>("day_v"));
-			tc_zarezGodz.setCellValueFactory(new PropertyValueFactory<Rezervation, Time>("time_v"));
-			tv_zarezWizyty.setItems(null);
-			tv_zarezWizyty.setItems(rezer);
+		// Wyœwietlanie zarezerwowanych wizyt przez pacjêta
+		rezer = FXCollections.observableArrayList();
+		ResultSet rezs = conn.createStatement().executeQuery(
+				"select id_v,imie, nazwisko, specjalizacja, day_v, time_v, pesel,id_d from zarezerwowane where pesel ="
+						+ "'" + pas + "';");
+		while (rezs.next()) {
+			rezer.add(new Rezervation(rezs.getInt(1), rezs.getString(2), rezs.getString(3), rezs.getString(4),
+					rezs.getDate(5), rezs.getTime(6), rezs.getString(7), rezs.getInt(8)));
+
 		}
-
+		tc_zarezid_v.setCellValueFactory(new PropertyValueFactory<Rezervation, Integer>("id_v"));
+		tc_zarezImie.setCellValueFactory(new PropertyValueFactory<Rezervation, String>("imie"));
+		tc_zarezNazwisko.setCellValueFactory(new PropertyValueFactory<Rezervation, String>("nazwisko"));
+		tc_zarezSpecjalizacja.setCellValueFactory(new PropertyValueFactory<Rezervation, String>("specjalizacja"));
+		tc_zarezData.setCellValueFactory(new PropertyValueFactory<Rezervation, Date>("day_v"));
+		tc_zarezGodz.setCellValueFactory(new PropertyValueFactory<Rezervation, Time>("time_v"));
+		tv_zarezWizyty.setItems(null);
+		tv_zarezWizyty.setItems(rezer);
+		
 	}
 
+}
