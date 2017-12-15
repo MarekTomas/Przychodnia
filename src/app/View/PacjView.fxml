@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -30,7 +31,7 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <TableView fx:id="tv_tabela" layoutX="196.0" layoutY="129.0" prefHeight="395.0" prefWidth="502.0">
+                        <TableView fx:id="tv_tabela" layoutX="196.0" layoutY="129.0" prefHeight="199.0" prefWidth="502.0">
                           <columns>
                               <TableColumn fx:id="tc_id_v" prefWidth="75.0" text="Id_v" visible="false" />
                             <TableColumn fx:id="tc_imie" prefWidth="100.0" text="Imie" />
@@ -41,9 +42,14 @@
                               <TableColumn fx:id="tc_id_d" prefWidth="75.0" text="id_d" visible="false" />
                           </columns>
                         </TableView>
-                        <Button fx:id="bt_rezerwuj" layoutX="574.0" layoutY="541.0" mnemonicParsing="false" onMouseClicked="#buttonClickRezerwuj" text="Rezerwuj wizytę" />
+                        <Button fx:id="bt_rezerwuj" layoutX="581.0" layoutY="567.0" mnemonicParsing="false" onMouseClicked="#buttonClickRezerwuj" text="Rezerwuj wizytę" />
                         <TextField fx:id="tf_filt" layoutX="420.0" layoutY="62.0" onKeyPressed="#filter" prefHeight="31.0" prefWidth="262.0" promptText="Wpisz imię lub nazwisko lekarza" />
                         <Button fx:id="bt_wylog" layoutX="812.0" layoutY="567.0" mnemonicParsing="false" onMouseClicked="#ButtonWyloguj" text="Wyloguj" />
+                        <TextArea fx:id="tf_message" layoutX="196.0" layoutY="354.0" prefHeight="200.0" prefWidth="502.0" promptText="Informcaja dla lekarza ">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </TextArea>
                      </children>
                   </AnchorPane>
             </content>

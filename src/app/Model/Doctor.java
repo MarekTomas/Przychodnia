@@ -9,6 +9,7 @@ public class Doctor {
 	private Date data;
 	private Time godz;
 	private Integer id_d;
+	private String info;
 	
 	public String getImie() {
 		return imie;
@@ -23,6 +24,13 @@ public class Doctor {
 		this.id_d = id_d;
 	}
 
+	public String getInfo() {
+		return info;
+	}
+
+	public void setInfo(String info) {
+		this.info = info;
+	}
 
 	public void setImie(String imie) {
 		this.imie = imie;
@@ -52,17 +60,20 @@ public class Doctor {
 		super();
 	}
 
-	public Doctor(String imie, String nazwisko, Date data, Time godz, Integer id_d) {
+	public Doctor(String imie, String nazwisko, Date data, Time godz, Integer id_d, String info) {
 		super();
 		this.imie = imie;
 		this.nazwisko = nazwisko;
 		this.data = data;
 		this.godz = godz;
 		this.id_d = id_d;
+		this.info = info;
 	}
+
+
+}
 
 	
 	
 	
 	
-}

@@ -22,6 +22,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -67,6 +68,9 @@ public class PacjController {
 
 	@FXML
 	private Button bt_wylog;
+	
+	@FXML
+	private TextArea tf_message;
 
 	@FXML
 	private TableView<Rezervation> tv_zarezWizyty;
@@ -91,15 +95,11 @@ public class PacjController {
 
 	@FXML
 	private TableColumn<Rezervation, Integer> tc_zarez_id_d;
-
-	@FXML
-	void CheckBoxWybierz(MouseEvent event) {
-
-	}
-
+	
 	public String pas = String.valueOf(LoginController.pass);
 	public ObservableList<Users> visits;
 	public ObservableList<Rezervation> rezer;
+	
 
 	@FXML
 	// rezerwowanie wizyty
@@ -113,9 +113,9 @@ public class PacjController {
 		Date data_selected = tv_tabela.getSelectionModel().getSelectedItem().getDay_v();
 		Time czas_selected = tv_tabela.getSelectionModel().getSelectedItem().getTime_v();
 		int id_d_selected = tv_tabela.getSelectionModel().getSelectedItem().getId_d();
-		String rezer = "insert into zarezerwowane(id_v,imie, nazwisko, specjalizacja, day_v, time_v,pesel,id_d)values('"
+		String rezer = "insert into zarezerwowane(id_v,imie, nazwisko, specjalizacja, day_v, time_v,pesel,id_d,info)values('"
 				+ id_selected + "','" + imie_selected + "','" + nazwisko_selected + "','" + specjalizacja_selected
-				+ "','" + data_selected + "','" + czas_selected + "','" + pas + "','" + id_d_selected + "');";
+				+ "','" + data_selected + "','" + czas_selected + "','" + pas + "','" + id_d_selected +"','"+tf_message.getText()+"');";
 		PreparedStatement psrezer = conn.prepareStatement(rezer);
 		psrezer.executeUpdate();
 		initialize();
@@ -126,14 +126,12 @@ public class PacjController {
 		psusu.executeUpdate();
 		initialize();
 
-		// Przechodzenie do widoku wysy³ania widomoœci
-		Stage stage = new Stage();
-		Parent parent = (Parent) FXMLLoader.load(getClass().getResource("/app/View/CheckView.fxml"));
-		Scene scene = new Scene(parent);
-		stage.setScene(scene);
-		stage.setTitle("Witaj");
-		stage.show();
-		((Node) (event.getSource())).getScene().getWindow().hide();
+		//Wyœwietlanie komuniaktu po zarezerwowaniu wizyty
+		Alert PreparedStatement = new Alert(AlertType.INFORMATION);
+		PreparedStatement.setHeaderText("Infromacja");
+		PreparedStatement.setContentText("Wizyta zarezerwowana poprawnie");
+		PreparedStatement.setTitle("");
+		PreparedStatement.showAndWait();
 		
 	}
 
@@ -191,7 +189,7 @@ public class PacjController {
 		if (!search.equals("")) {
 			ResultSet rs = conn.createStatement().executeQuery(
 					"select id_v,imie, nazwisko, specjalizacja, day_v, time_v,id_d from doctors natural join visits where id_d = id_d and locate('"
-							+ search + "',imie)!=0 or locate('" + search + "',nazwisko)!=0 ");
+							+ search + "',imie)!=0 or locate('" + search + "',nazwisko)!=0 order by imie,nazwisko asc ");
 			while (rs.next()) {
 				visits.add(new Users(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDate(5),
 						rs.getTime(6), rs.getInt(7)));

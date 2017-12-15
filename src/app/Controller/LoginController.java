@@ -38,7 +38,7 @@ public class LoginController {
 	public static String a;
 	public static String pass;
 
-	@FXML
+	@FXML // logowanie u¿ytkownika 
 	void buttonLogowanie(MouseEvent event) throws SQLException, IOException {
 		Connection conn1 = db.Connection();
 		Statement stmt = conn1.createStatement();
@@ -83,7 +83,7 @@ public class LoginController {
 		}
 	}
 
-	@FXML
+	@FXML//rjestrowanie pacjenta
 	void buttonRejestracja(MouseEvent event) throws IOException {
 		Stage stage = new Stage();
 		Parent parent = (Parent) FXMLLoader.load(getClass().getResource("/app/View/RegistrationView.fxml"));
